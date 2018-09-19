@@ -2,6 +2,8 @@ package sv.edu.catolica.lab2_elmer_victor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -10,13 +12,12 @@ import java.text.DecimalFormat;
 
 public class ahorros_figueroa_padilla extends AppCompatActivity {
 
-    EditText etCliente;
-    EditText etNumCuenta;
     EditText etMonto;
     RadioButton rb1;
     RadioButton rb2;
     RadioButton rb3;
     RadioButton rb4;
+    Button btnCalcular;
     TextView tvInteres;
     TextView tvSaldo;
     String interes;
@@ -25,6 +26,13 @@ public class ahorros_figueroa_padilla extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ahorros_figueroa_padilla);
+        btnCalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvInteres.setText(calcularInteres());
+                tvSaldo.setText(calcularSaldo());
+            }
+        });
     }
 
     protected String calcularInteres(){
